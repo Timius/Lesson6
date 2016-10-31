@@ -1,8 +1,8 @@
 /**
  * Created by User on 26.10.2016.
  */
-public class Predator {
-    //имя, тип, возраст, вес унаследую от класса животные
+public class Predator extends Animal {
+    //имя, тип, возраст, вес унаследовал от класса животные
     private String suborder;   //подотряд псовые или кошачьи
     double strong;
     double speed;
@@ -11,9 +11,11 @@ public class Predator {
         this.strong = strong;
         this.speed = speed;
     }
+
+
     void eat(){
         System.out.println("Ест травоядных");
     }
-    double force(){ return strong*speed;  }
+    double force(){ return (0.5*weight)*(1.2*strong)*(0.9*speed);  }
 }
 

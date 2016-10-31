@@ -2,10 +2,10 @@
  * Created by User on 26.10.2016.
  */
 public class Animal {
-    private String name;
-    private String type;
-    private double age;
-    private double weight;
+    protected String name;
+    protected String type;
+    protected double age;
+    protected double weight;
 
     public void setName(String name) {
         this.name = name;
