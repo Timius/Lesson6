@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -5,32 +6,35 @@ import java.util.Random;
  */
 public class Main {
     public static void main(String[] args) {
-        Predator tiger = new Predator("кошачьи", 71, 60);
-        tiger.setName("Шархан");
-        tiger.setAge(7.5);
-        tiger.setType("Хищник");
-        tiger.setWeight(200);
-
-
-        System.out.println(tiger.getName());
-        tiger.eat();
-        tiger.force();
-        System.out.println("Сила тигра " + tiger.force());
+        Predator tiger = new Predator("Шархан", "млекопитающие", 7.5, 200,
+                "кошачьи", 71, 60);
+       // поменял создание экземпляра класса через "объединенный" конструктор (намного удобнее)
+        System.out.println(tiger.getName() + " cилой " + tiger.force());
 
         Herbivorous olen = new Herbivorous(3, 1.1, 75);
-        System.out.println("olen");
         olen.setWeight(100);
-        olen.eat();
-        olen.running();
-        olen.sType();
         System.out.println("Защита оленя " + olen.protection());
+        olen.sType();
 
         Random random = new Random();
-        int k = random.nextInt(11);//коэффициент для вариации следующей "охоты"
-        //System.out.println("k="+k);
-  if (tiger.force()>k*olen.protection())//кто победит хищник или травоядное (олень чаще убегает, так и задумывалось и соответствует реалиям...)
-      System.out.println("Тигр съел оленя");
-  else System.out.println("Олень убежал");
+        int k = random.nextInt(11);//коэффициент для вариации метода
+        tiger.eat(olen);//метод Eat (олень чаще убегает, так и задумывалось и соответствует реалиям...)
+        {
+            if (tiger.force()>k*olen.protection())
+                System.out.println("Тигр съел оленя");
+            else System.out.println("Олень убежал");
+                  };
 
-    }
+        Felidae felidae = new Felidae();
+        felidae.setName("puma");
+
+        Skill[] pumaSkills = new Skill[3];
+        pumaSkills[0] = new Skill("прячет когти", true);
+        pumaSkills[1] = new Skill("охотится путём подкрадывания", true);
+        pumaSkills[2] = new Skill("одиночная", true);
+        felidae.setSkills(pumaSkills);
+
+        System.out.println(felidae.getName());
+        System.out.println(felidae.hasSkill("прячет когти"));
+        }
 }
