@@ -3,13 +3,16 @@
  */
 public class Herbivorous extends Animal {
     //имя, тип, возраст, вес унаследовал от класса животные (скорость правильнее перенести в Энимал)
-    private int hoof;
     private double growth; //высота
     private double speed;
-    Herbivorous(int h, double g, double s){   //конструктор не через this для практики
-       hoof=h;
-       growth=g;
-       speed=s;
+    protected Herbivorous(String name, String type, double age,
+                double weight, double g, double s){   //конструктор не через this для практики
+        growth=g;
+        speed=s;
+        setName(name);
+        setType(type);
+        setAge(age);
+        setWeight(weight);
 }
 
     void running(){
@@ -18,10 +21,7 @@ public class Herbivorous extends Animal {
  //   void eat(){
  //       System.out.println("Ест траву");
  //   }
-    void sType(){
-        if (hoof == 2) System.out.println("Парнокопытные");
-        else System.out.println("Не парнокопытные");
-    }
+
     public double protection(){ return (1.5*weight)*(2.0*speed)*10;  }//10 эмпирический коэфициент для правдоподобности
 }
 
