@@ -17,7 +17,7 @@ public class Main {
                 "кошачьи", 71, 80, "Амурский");
         System.out.println("Мощь тигра " + tiger1.force());
 
-        Volf volf1 = new Volf("Волк", "Млекопитающее", 6, 50, "Псовые", 50, 50,
+        Volf volf1 = new Volf("Волк", "Млекопитающее", 6, 50, "Псовые", 8*50, 50,
                 "Охотится стаей");
         System.out.println("Мощь волка " + volf1.force());
 
@@ -35,87 +35,23 @@ public class Main {
         System.out.println("Защита обезьяны " + monkey1.protection());
 
         Random random = new Random();
-        //int k = random.nextInt(10);//коэффициент для вариации метода
 
         tiger1.eat(olen1);//метод Eat (олень чаще убегает, так и задумывалось и соответствует реалиям...)
-        {
-            int k = random.nextInt(10);
-            if (tiger1.force()>k*olen1.protection())
-                System.out.println(tiger1.getName() + " съел " + olen1.getName()+k);
-            else System.out.println(olen1.getName() + " убежал от " + tiger1.getName());
-                  };
-
         tiger1.eat(slon1);
-        {
-            int k = random.nextInt(10);
-            if (tiger1.force()>k*slon1.protection())
-                System.out.println(tiger1.getName() + " съел " + slon1.getName());
-            else System.out.println(slon1.getName() + " убежал от " + tiger1.getName());
-        };
-
         tiger1.eat(hare1);
-        {
-            int k = random.nextInt(10);
-            if (tiger1.force()>k*hare1.protection())
-                System.out.println(tiger1.getName() + " съел " + hare1.getName());
-            else System.out.println(hare1.getName() + " убежал от " + tiger1.getName());
-        };
 
         volf1.eat(olen1);
-        {
-            int k = random.nextInt(10);
-            if (8*volf1.force()>k*olen1.protection()) //ввел коефициент на охоту стаей
-                System.out.println(volf1.getName() + " съел " + olen1.getName());
-            else System.out.println(olen1.getName() + " убежал от " + volf1.getName());
-        };
-
         volf1.eat(hare1);
-        {
-            int k = random.nextInt(10);
-            if (8*volf1.force()>k*hare1.protection()) //ввел коефициент на охоту стаей
-                System.out.println(volf1.getName() + " съел " + hare1.getName());
-            else System.out.println(hare1.getName() + " убежал от "+volf1.getName());
-        };
-
         volf1.eat(slon1);
-        {
-            int k = random.nextInt(10);
-            if (8*volf1.force()>k*slon1.protection()) //ввел коефициент на охоту стаей
-                System.out.println(volf1.getName() + " съел " + slon1.getName());
-            else System.out.println(slon1.getName() + " убежал от " + volf1.getName());
-        };
 
         lion1.eat(olen1);
-        {
-            int k = random.nextInt(10);
-            if (lion1.force()>k*olen1.protection())
-                System.out.println(lion1.getName() + " съел " + olen1.getName());
-            else System.out.println(olen1.getName() + " убежал от " + lion1.getName());
-        };
-
         lion1.eat(hare1);
-        {
-            int k = random.nextInt(10);
-            if (lion1.force()>k*hare1.protection())
-                System.out.println(volf1.getName() + " съел " + hare1.getName());
-            else System.out.println(hare1.getName() + " убежал от " + lion1.getName());
-        };
-
         lion1.eat(slon1);
-        {
-            int k = random.nextInt(10);
-            if (lion1.force()>k*slon1.protection())
-                System.out.println(lion1.getName() + " съел " + slon1.getName());
-            else System.out.println(slon1.getName() + " убежал от " + lion1.getName());
-        };
-
         lion1.eat(monkey1);
-        {
-            int k = random.nextInt(10);
-            if (lion1.force()>k*monkey1.protection())
-                System.out.println(lion1.getName() + " съел " + monkey1.getName());
-            else System.out.println(monkey1.getName() + " убежал от " + lion1.getName());
-        };
+
+        lion1.fight(tiger1);
+        lion1.fight(volf1);
+        tiger1.fight(volf1);
 
         Felidae felidae = new Felidae();
         felidae.setName("puma");

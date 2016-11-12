@@ -20,7 +20,20 @@ public class Predator extends Animal {
         this.speed = speed;
 
     }
-    public void eat(Herbivorous herbivorous){};
+    public void eat(Herbivorous herbivorous){
+        int k = new Random().nextInt(10);
+        if (this.force()>k*herbivorous.protection())
+            System.out.println(this.getName() + " съел " + herbivorous.getName());
+        else System.out.println(herbivorous.getName() + " убежал от " + this.getName());
+    };
+    public void fight(Predator predator){
+        int f1 = new Random().nextInt(3);
+        int f2 = new Random().nextInt(3);
+        if (f1*this.force()>f2*predator.force())
+            System.out.println(this.getName() + " победил " + predator.getName());
+        else System.out.println(predator.getName() + " победил " + this.getName());
+    }
+
     double force() {
         return (0.5 * weight) * (1.2 * strong) * (0.9 * speed);
     }
